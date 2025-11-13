@@ -15,7 +15,8 @@ class ZedCamera:
         self.size = config.get("size", (1280, 720))
 
         self.auto_exposure = config.get("auto_exposure", False)
-        self.exposure = config.get("exposure", 80)  # Manual exposure value (1-100)
+        self.exposure = config.get("exposure", 65)  # manual exposure value (1-100)
+        self.gain = config.get("gain", 60)      # set a higher value when exposure cannot be increased further
 
         # instantiate a ZED camera
         self.camera = sl.Camera()
@@ -41,7 +42,13 @@ class ZedCamera:
         if err != sl.ERROR_CODE.SUCCESS:
             raise Exception(f"[Zed {str(self.serial)[-3:]}] Failed to launch. Check camera connection!")
 
-        self.camera.set_camera_settings(sl.VIDEO_SETTINGS.AEC_AGC, 1 if self.auto_exposure else 0)
+        # # adjust exposure
+        if self.auto_exposure:
+            self.camera.set_camera_settings(sl.VIDEO_SETTINGS.AEC_AGC, 1)
+
+        else:
+            self.camera.set_camera_settings(sl.VIDEO_SETTINGS.EXPOSURE, self.exposure)
+            self.camera.set_camera_settings(sl.VIDEO_SETTINGS.GAIN, self.gain)
 
         self.closed = False
 

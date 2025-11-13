@@ -11,36 +11,42 @@ def main():
 
     # ===== YOUR CHANGES =====
     serial1 = 24944966
-    serial2 = 24944966
+    serial2 = 33261276
 
     # see readme for full configurations.
     cam1_config = {
         "enable_viewer": True,
         "enable_recorder": False,
+
+        "specifications": {
+            "fps": 30,
+            "auto_exposure": False,
+            "exposure": 20,
+            "gain": 50,
+        },
+
         "viewer": {
             "show_color": True,
-            "show_depth": True,
+            "show_depth": False,
             "fps": 30
         },
-        "recorder": {
-            "save_dir": "./recordings",
-            "save_name": "test",
-            "fps": 10,
-            "save_with_overlays": False,
-            "auto_start": True          # if False, press 's' to start recording at any time point
-        }
     }
     cam2_config = {
-        "enable_viewer": False,
-        "enable_recorder": True,
+        "enable_viewer": True,
+        "enable_recorder": False,
 
-        "recorder": {
-            "save_dir": "./recordings",
-            "save_name": "test",
-            "fps": 10,
-            "save_with_overlays": True,
-            "auto_start": True          # if False, press 's' to start recording at any time point
-        }
+        "specifications": {
+            "fps": 30,
+            "auto_exposure": False,
+            "exposure": 25,
+            "gain": 45,
+        },
+
+        "viewer": {
+            "show_color": True,
+            "show_depth": False,
+            "fps": 30
+        },
     }
     # ========================
 

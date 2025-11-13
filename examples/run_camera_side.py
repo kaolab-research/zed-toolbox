@@ -7,15 +7,18 @@ from zed_toolbox.camera import Camera
 def main():
 
     # ===== YOUR CHANGES =====
-    serial = 24944966
+    serial = 33261276
 
     # see readme for full configurations.
     camera_config = {
         "enable_viewer": True,
-        "enable_recorder": True,
+        "enable_recorder": False,
 
         "specifications": {
             "fps": 30,
+            "auto_exposure": False,
+            "exposure": 25,
+            "gain": 45,
         },
 
         "viewer": {                     # no need to keep this dict if "enable_viewer" is False
