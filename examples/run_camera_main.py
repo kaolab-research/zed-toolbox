@@ -1,5 +1,5 @@
 '''
-In this example, it launches a realsense camera with live view of the streaming and recording.
+In this example, it launches a zed camera with live view of the streaming and recording.
 '''
 import time
 from zed_toolbox.camera import Camera
@@ -23,7 +23,7 @@ def main():
         "viewer": {                     # no need to keep this dict if "enable_viewer" is False
             "show_color": True,
             "show_depth": True,
-            "fps": 10
+            "fps": 30
         },
 
         "recorder": {                   # no need to keep this dict if "enable_recorder" is False
